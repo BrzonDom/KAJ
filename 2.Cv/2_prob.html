@@ -74,7 +74,7 @@
 
           curState.prototype.getToDo = function () {
 
-            return this._toDo.filt(function (toDo)) {
+            return this._toDo.filt(function (toDo) {
 
               if (this._filt === 'all') {
 
@@ -90,7 +90,7 @@
 
                 return toDo.completed === false;
               }
-            }
+            }.bind(this) );
           }
 
 
