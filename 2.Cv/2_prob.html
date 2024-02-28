@@ -60,8 +60,39 @@
 
             this._toDo = orgToDo;
             this._filt = orgFilt;
-
           }
+
+          curState.prototype.addToDo = function (toDo) {
+
+            this._toDo.push(toDo);
+          }
+
+          curState.prototype.setFilt = function (filt) {
+
+            this._filt = filt
+          }
+
+          curState.prototype.getToDo = function () {
+
+            return this._toDo.filt(function (toDo)) {
+
+              if (this._filt === 'all') {
+
+                return true;
+              }
+
+              else if (this._filt === 'completed') {
+
+                return toDo.completed === true;
+              }
+
+              else if (this._filt === 'active') {
+
+                return toDo.completed === false;
+              }
+            }
+          }
+
 
           //
           // Prepare todos html
