@@ -43,7 +43,7 @@
           //
 
           var orgState = {
-              todos: [
+              toDos: [
                   { text: 'Hi', completed: true  },
                   { text: 'Hello', completed: false },
                   { text: 'Hi there!', completed: true },
@@ -56,25 +56,28 @@
           // Current state
           //
 
-          var curState = function (orgToDo, orgFilt) {
+          var curState = function (orgToDos, orgFilt) {
 
-            this._toDo = orgToDo;
+            this._toDos = orgToDos;
             this._filt = orgFilt;
           }
 
-          curState.prototype.addToDo = function (toDo) {
 
-            this._toDo.push(toDo);
+          curState.prototype.addToDos = function (toDos) {
+
+            this._toDos.push(toDos);
           }
+
 
           curState.prototype.setFilt = function (filt) {
 
             this._filt = filt
           }
 
-          curState.prototype.getToDo = function () {
 
-            return this._toDo.filt(function (toDo) {
+          curState.prototype.getToDos = function () {
+
+            return this._toDos.filt(function (toDos) {
 
               if (this._filt === 'all') {
 
@@ -83,55 +86,57 @@
 
               else if (this._filt === 'completed') {
 
-                return toDo.completed === true;
+                return toDos.completed === true;
               }
 
               else if (this._filt === 'active') {
 
-                return toDo.completed === false;
+                return toDos.completed === false;
               }
             }.bind(this) );
           }
 
 
+          var state = new curState (orgState.toDos)
+
           //
-          // Prepare todos html
+          // Prepare f html
           //
 
-          function createHtmlWithCreateElement (todos, targetEl) {
+          function createHtmlWithCreateElement (toDos, targetEl) {
               targetEl.innerHTML = ''
 
-              for (var i = 0; i < todos.length; i++) {
-                  var todo = todos[i];
+              for (var i = 0; i < toDos.length; i++) {
+                  var ToDo = toDos[i];
 
                   // Prepare elements
                   var inputEl = document.createElement('input');
                   inputEl.classList.add('toggle');
                   inputEl.type = 'checkbox';
-                  inputEl.checked = todo.completed;
+                  inputEl.checked = ToDo.completed;
 
                   var labelEl = document.createElement('label');
-                  labelEl.innerHTML = todo.text;
+                  labelEl.innerHTML = ToDo.text;
 
                   var buttonEl = document.createElement('button');
                   buttonEl.classList.add('destroy');
 
                   // Append these elements to the todo wrapper element
-                  var todoEl = document.createElement('li');
-                  todoEl.appendChild(inputEl);
-                  todoEl.appendChild(labelEl);
-                  todoEl.appendChild(buttonEl);
+                  var ToDoEl = document.createElement('li');
+                  ToDoEl.appendChild(inputEl);
+                  ToDoEl.appendChild(labelEl);
+                  ToDoEl.appendChild(buttonEl);
 
                   // Append todo to the page
-                  targetEl.appendChild(todoEl);
+                  targetEl.appendChild(ToDoEl);
               }
           }
 
-          function createHtmlWithStrings (todos, targetEl) {
+          function createHtmlWithStrings (toDos, targetEl) {
               targetEl.innerHTML = ''
 
-              for (var i = 0; i < todos.length; i++) {
-                  var todo = todos[i];
+              for (var i = 0; i < toDos.length; i++) {
+                  var ToDo = toDos[i];
 
                   var html =
                       '<li>' +
