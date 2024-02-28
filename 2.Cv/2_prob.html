@@ -39,10 +39,10 @@
 
   <script>
           //
-          // Predefined state
+          // Original state
           //
 
-          var state = {
+          var orgState = {
               todos: [
                   { text: 'Hi', completed: true  },
                   { text: 'Hello', completed: false },
@@ -51,6 +51,17 @@
               filter: 'all'
           };
 
+
+          //
+          // Current state
+          //
+
+          var curState = function (orgToDo, orgFilt) {
+
+            this._toDo = orgToDo;
+            this._filt = orgFilt;
+
+          }
 
           //
           // Prepare todos html
@@ -108,7 +119,7 @@
 
           var todoListEl = document.querySelector('.todo-list')
           // createHtmlWithCreateElement(state.todos, todoListEl);
-          createHtmlWithStrings(state.todos, todoListEl);
+          createHtmlWithStrings(orgState.todos, todoListEl);
 
           //
           // Handle main input
