@@ -140,8 +140,8 @@
 
                   var html =
                       '<li>' +
-                      '  <input class="toggle" type="checkbox" ' + (todo.completed ? 'checked' : '')  + '>' +
-                      '  <label>' + todo.text + '</label>' +
+                      '  <input class="toggle" type="checkbox" ' + (ToDo.completed ? 'checked' : '')  + '>' +
+                      '  <label>' + ToDo.text + '</label>' +
                       '  <button class="destroy"></button>' +
                       '</li>';
 
@@ -155,7 +155,7 @@
 
           var todoListEl = document.querySelector('.todo-list')
           // createHtmlWithCreateElement(state.todos, todoListEl);
-          createHtmlWithStrings(orgState.todos, todoListEl);
+          createHtmlWithStrings(orgState.toDos, todoListEl);
 
           //
           // Handle main input
