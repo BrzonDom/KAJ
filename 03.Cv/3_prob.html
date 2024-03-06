@@ -64,7 +64,7 @@
             }.bind(this));
         }
 
-        var state = new State(
+        const state = new State(
             [
                 { text: 'Hi', completed: true  },
                 { text: 'Hello', completed: false },
@@ -89,23 +89,23 @@
         function createHtmlWithCreateElement (todos, targetEl) {
             targetEl.innerHTML = ''
 
-            for (var i = 0; i < todos.length; i++) {
-                var todo = todos[i];
+            for (let i = 0; i < todos.length; i++) {
+                let todo = todos[i];
 
                 // Prepare elements
-                var inputEl = document.createElement('input');
+                let inputEl = document.createElement('input');
                 inputEl.classList.add('toggle');
                 inputEl.type = 'checkbox';
                 inputEl.checked = todo.completed;
 
-                var labelEl = document.createElement('label');
+                let labelEl = document.createElement('label');
                 labelEl.innerHTML = todo.text;
 
-                var buttonEl = document.createElement('button');
+                let buttonEl = document.createElement('button');
                 buttonEl.classList.add('destroy');
 
                 // Append these elements to the todo wrapper element
-                var todoEl = document.createElement('li');
+                let todoEl = document.createElement('li');
                 todoEl.appendChild(inputEl);
                 todoEl.appendChild(labelEl);
                 todoEl.appendChild(buttonEl);
@@ -118,8 +118,8 @@
         function createHtmlWithStrings (todos, targetEl) {
             targetEl.innerHTML = '';
 
-            var todosHtmlArray = todos.map(function (todo) {
-                var html =
+            let todosHtmlArray = todos.map(function (todo) {
+                let html =
                     '<li>' +
                     '  <input class="toggle" type="checkbox" ' + (todo.completed ? 'checked' : '')  + '>' +
                     '  <label>' + todo.text + '</label>' +
@@ -129,7 +129,7 @@
                 return html;
             })
 
-            var todosHtml = todosHtmlArray.join('');
+            let todosHtml = todosHtmlArray.join('');
             targetEl.innerHTML = todosHtml;
         }
 
@@ -137,7 +137,7 @@
         // Append todos html into the page
         //
 
-        var todoListEl = document.querySelector('.todo-list')
+        const todoListEl = document.querySelector('.todo-list')
         // createHtmlWithCreateElement(state.getTodos(), todoListEl);
         createHtmlWithStrings(state.getTodos(), todoListEl);
 
@@ -145,14 +145,14 @@
         // Handle main input
         //
 
-        var inputEl = document.querySelector('.new-todo');
+        let inputEl = document.querySelector('.new-todo');
         inputEl.addEventListener('keyup', function (event) {
             if (event.key !== "Enter") {
                 return;
             }
 
             // Update app state
-            var todo = {
+            let todo = {
                 text: inputEl.value,
                 completed: false
             };
@@ -175,15 +175,15 @@
         // Handle filters
         //
 
-        var filters = {
+        let filters = {
             all: document.querySelector('#filter-all'),
             active: document.querySelector('#filter-active'),
             completed: document.querySelector('#filter-completed')
         };
 
-        for (var filterName in filters) {
+        for (let filterName in filters) {
             if (filters.hasOwnProperty(filterName)) {
-                var filterEl = filters[filterName];
+                let filterEl = filters[filterName];
 
                 (function (capturedFilterName) {
                     filterEl.addEventListener('click', function (e) {
@@ -195,9 +195,9 @@
 
         function filtersClick (newFilterType) {
             // Remove 'selected' class on all filter buttons
-            for (var key in filters) {
+            for (let key in filters) {
                 if (filters.hasOwnProperty(key)) {
-                    var filter = filters[key];
+                    let filter = filters[key];
                     filter.classList.remove('selected');
                 }
             }
