@@ -12,11 +12,21 @@
 
 		<p id="hide">JavaScript can hide HTML elements.</p>
 
-		<button type="button" onclick="document.getElementById('hide').style.display='none'">Click Me!</button>
+		<button type="button" onclick="document.getElementById('hide').style.display='none'">Click to hide !</button>
 
-		<p id="show" style="display:none">Hello JavaScript!</p>
+		<br>
+		<br>
 
-		<button type="button" onclick="document.getElementById('show').style.display='block'">Click Me!</button>
+		<!-- 
+			JavaScript Can Show HTML Elements
+				Showing hidden HTML elements can also be done by changing the display style:
+					from: ... style="display:none"
+					to:		... .style.display = "block";
+		 -->
+
+		<p id="show" style="display:none">JavaScript can show HTML elements</p>
+
+		<button type="button" onclick="document.getElementById('show').style.display='block'">Click to show !</button>
 
 	</body>
 </html> 
